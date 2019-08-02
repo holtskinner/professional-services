@@ -101,7 +101,7 @@ def bq_to_csv(project_id, dataset_id, input_bucket_name, output_bucket_name):
         df = client.list_rows(table).to_dataframe()
         df.replace({
             input_bucket_name: output_bucket_name,
-            ".pdf": ".png"
+            r"\.pdf": ".png"
         }, regex=True, inplace=True)
 
         df.to_csv(destination_uri, index=False)
